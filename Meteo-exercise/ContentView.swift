@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var weatherForecast: WeatherForecast?
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,11 +18,18 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .task {
+            do {
+               weatherForecast = try await APIHandler.shared.fetchWeatherForecast()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(weatherForecast: nil)
     }
 }
