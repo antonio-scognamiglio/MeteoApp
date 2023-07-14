@@ -30,6 +30,16 @@ struct WeatherForecast: Codable {
         dailyUnits: DailyUnits.example,
         daily: Daily.example
     )
+    
+    func getImageCode(weatherCode: Int) -> String {
+        switch weatherCode {
+        case 0 : return "ClearSky"
+        case 1, 2, 3 : return "MainlyClear"
+        
+        default:
+            return "ClearSky"
+        }
+    }
 }
 
 struct Daily: Codable {
