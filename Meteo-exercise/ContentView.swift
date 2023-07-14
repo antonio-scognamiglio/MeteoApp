@@ -30,6 +30,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(weatherForecast: nil)
+        ContentView(weatherForecast: WeatherForecast.example)
     }
 }

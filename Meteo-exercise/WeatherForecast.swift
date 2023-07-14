@@ -35,20 +35,25 @@ struct WeatherForecast: Codable {
 struct Daily: Codable {
     let time: [String]?
     let weathercode: [Int]?
+    let temperature2MMax, temperature2MMin: [Double]?
     
     static let example = Daily(
         time: ["2023-07-14"],
-        weathercode: [2]
+        weathercode: [2],
+        temperature2MMax: [35.8],
+        temperature2MMin: [24.4]
     )
 }
 
 
 struct DailyUnits: Codable {
-    let time, weathercode: String?
+    let time, weathercode, temperature2MMax, temperature2MMin: String?
     
     static let example = DailyUnits(
         time: "iso8601",
-        weathercode: "wmo code"
+        weathercode: "wmo code",
+        temperature2MMax: "°C",
+        temperature2MMin: "°C"
     )
 }
 

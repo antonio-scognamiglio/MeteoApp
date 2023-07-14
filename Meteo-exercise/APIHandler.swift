@@ -14,7 +14,7 @@ class APIHandler {
     
     func fetchWeatherForecast(latitude: Double = 41.9027835, longitude: Double = 12.4963655, forecastDays: Int = 7) async throws -> WeatherForecast {
         let endpoint = "https://api.open-meteo.com/v1/forecast"
-        let query = "?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m,precipitation,weathercode&daily=weathercode&timezone=GMT&forecast_days=\(forecastDays)"
+        let query = "?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m,precipitation,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=GMT&forecast_days=\(forecastDays)"
         
         guard let url = URL(string: (endpoint + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) else { throw NetworkError.invalidUrl }
         
@@ -27,7 +27,7 @@ class APIHandler {
 
 //        print(String(decoding: verifiedData, as: UTF8.self))
         let weatherObject = try JSONDecoder().decode(WeatherForecast.self, from: verifiedData)
-
+        print("Tutto a posto")
         return weatherObject
     }
 }
