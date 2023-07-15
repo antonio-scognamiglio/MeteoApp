@@ -11,15 +11,6 @@ struct ContentView: View {
     @State var weatherForecast = WeatherForecast()
     @State var hasFetched = false
     
-//    var strHourlyTemps: [String]{
-//        if let hourlyTemps = weatherForecast.hourly?.temperature2M {
-//            return  hourlyTemps.map { temp in
-//                String(temp)
-//            }
-//        } else {
-//            return ["Empty"]
-//        }
-//    }
     var backgroundColor = #colorLiteral(red: 0.5262038708, green: 0.7596305013, blue: 0.912558496, alpha: 1)
     var backgroundColor2 = #colorLiteral(red: 0.968627451, green: 0.9490196078, blue: 0.8509803922, alpha: 1)
     
@@ -61,6 +52,13 @@ struct ContentView: View {
             do {
                 weatherForecast = try await APIHandler.shared.fetchWeatherForecast()
                 hasFetched = true
+//                if let temps = weatherForecast.hourly?.temperature2M {
+//                    for temp in temps {
+//                        print(temp)
+//                    }
+//                } else {
+//                    print("Non c'è niente ...")
+//                }
             } catch {
                 hasFetched = false
                 print(error.localizedDescription)

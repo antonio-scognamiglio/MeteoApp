@@ -35,6 +35,19 @@ struct WeatherForecast: Codable {
         }
     }
     
+    enum CodingKeys: String, CodingKey {
+           case latitude, longitude
+           case generationtimeMS = "generationtime_ms"
+           case utcOffsetSeconds = "utc_offset_seconds"
+           case timezone
+           case timezoneAbbreviation = "timezone_abbreviation"
+           case elevation
+           case hourlyUnits = "hourly_units"
+           case hourly
+           case dailyUnits = "daily_units"
+           case daily
+    }
+    
     init(){
         latitude = Double()
         longitude = Double()
@@ -89,6 +102,12 @@ struct Daily: Codable {
         temperature2MMax: [35.8],
         temperature2MMin: [24.4]
     )
+    
+    enum CodingKeys: String, CodingKey {
+           case time, weathercode
+           case temperature2MMax = "temperature_2m_max"
+           case temperature2MMin = "temperature_2m_min"
+    }
 }
 
 
@@ -101,6 +120,12 @@ struct DailyUnits: Codable {
         temperature2MMax: "°C",
         temperature2MMin: "°C"
     )
+    
+    enum CodingKeys: String, CodingKey {
+            case time, weathercode
+            case temperature2MMax = "temperature_2m_max"
+            case temperature2MMin = "temperature_2m_min"
+        }
 }
 
 
@@ -110,15 +135,6 @@ struct Hourly: Codable {
     let precipitation: [Double]?
     let weathercode: [Int]?
     
-//    var stringTemperatures: [String]{
-//        if let temperatures = temperature2M {
-//            return temperatures.map { temp in
-//                String(temp)
-//            }
-//        } else {
-//            return ["allelelelelelell"]
-//        }
-//    }
     static let example = Hourly(
         time: [
             "2023-07-14T00:00",
@@ -225,6 +241,12 @@ struct Hourly: Codable {
             2
         ]
     )
+    
+    enum CodingKeys: String, CodingKey {
+            case time
+            case temperature2M = "temperature_2m"
+            case precipitation, weathercode
+        }
 }
 
 func getImageCode(for weatherCode: Int) -> String {
@@ -284,6 +306,12 @@ struct HourlyUnits: Codable {
     let time, temperature2M, precipitation, weathercode: String?
         
     static let example = HourlyUnits(time: "iso8601", temperature2M: "°C", precipitation: "mm", weathercode: "wmo code")
+    
+    enum CodingKeys: String, CodingKey {
+           case time
+           case temperature2M = "temperature_2m"
+           case precipitation, weathercode
+       }
 }
 
 
