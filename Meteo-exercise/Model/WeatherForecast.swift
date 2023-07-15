@@ -98,6 +98,26 @@ struct Daily: Codable {
     let weathercode: [Int]?
     let temperature2MMax, temperature2MMin: [Double]?
     
+    var stringTempMax: [String] {
+        if let temps = temperature2MMax {
+            return temps.map { temp in
+                temp.convertToString()
+            }
+        } else {
+            return []
+        }
+    }
+    
+    var stringTempMin: [String] {
+        if let temps = temperature2MMin {
+            return temps.map { temp in
+                temp.convertToString()
+            }
+        } else {
+            return []
+        }
+    }
+    
     static let example = Daily(
         time: ["2023-07-14"],
         weathercode: [2],

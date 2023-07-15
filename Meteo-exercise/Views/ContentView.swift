@@ -17,7 +17,7 @@ struct ContentView: View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea()
             VStack {
-                HStack {
+                HStack{
                     VStack(alignment: .leading) {
                         Text("Latitudine: \(weatherForecast.strCoordinates.latitude)")
                             .font(.title2)
@@ -30,10 +30,11 @@ struct ContentView: View {
                     }
                     Spacer()
                     Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
-                        .resizable()
+                        .font(.system(size: 64))
                         .foregroundColor(.yellow)
-                        .scaledToFit()
+
                 }
+                .padding(.vertical)
                 
                 Text("Today")
                     .foregroundColor(.white)
@@ -50,6 +51,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                Spacer()
             }
                 
             .padding()
