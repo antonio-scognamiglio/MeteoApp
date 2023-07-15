@@ -10,6 +10,9 @@
 		71DCED382A61416800EAC3E8 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED372A61416800EAC3E8 /* WeatherForecast.swift */; };
 		71DCED3A2A6154A300EAC3E8 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED392A6154A300EAC3E8 /* APIHandler.swift */; };
 		71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */; };
+		71DCED462A62B3B400EAC3E8 /* HourCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED452A62B3B400EAC3E8 /* HourCardView.swift */; };
+		71DCED482A62D46A00EAC3E8 /* Color-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED472A62D46A00EAC3E8 /* Color-Extension.swift */; };
+		71DCED4A2A62E35D00EAC3E8 /* View-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED492A62E35D00EAC3E8 /* View-Extension.swift */; };
 		71F047DF2A60050000957AC3 /* Meteo_exerciseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F047DE2A60050000957AC3 /* Meteo_exerciseApp.swift */; };
 		71F047E12A60050000957AC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F047E02A60050000957AC3 /* ContentView.swift */; };
 		71F047E32A60050100957AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F047E22A60050100957AC3 /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 		71DCED372A61416800EAC3E8 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		71DCED392A6154A300EAC3E8 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		71DCED452A62B3B400EAC3E8 /* HourCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCardView.swift; sourceTree = "<group>"; };
+		71DCED472A62D46A00EAC3E8 /* Color-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extension.swift"; sourceTree = "<group>"; };
+		71DCED492A62E35D00EAC3E8 /* View-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extension.swift"; sourceTree = "<group>"; };
 		71F047DB2A60050000957AC3 /* Meteo-exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meteo-exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F047DE2A60050000957AC3 /* Meteo_exerciseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteo_exerciseApp.swift; sourceTree = "<group>"; };
 		71F047E02A60050000957AC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +56,7 @@
 		71DCED422A62B1A300EAC3E8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				71DCED452A62B3B400EAC3E8 /* HourCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -94,6 +101,8 @@
 				71DCED442A62B21300EAC3E8 /* Model */,
 				71DCED412A62B19300EAC3E8 /* Views */,
 				71DCED432A62B1E400EAC3E8 /* Network */,
+				71DCED472A62D46A00EAC3E8 /* Color-Extension.swift */,
+				71DCED492A62E35D00EAC3E8 /* View-Extension.swift */,
 				71F047E22A60050100957AC3 /* Assets.xcassets */,
 				71F047E42A60050100957AC3 /* Preview Content */,
 			);
@@ -180,9 +189,12 @@
 			files = (
 				71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */,
 				71F047E12A60050000957AC3 /* ContentView.swift in Sources */,
+				71DCED462A62B3B400EAC3E8 /* HourCardView.swift in Sources */,
 				71DCED382A61416800EAC3E8 /* WeatherForecast.swift in Sources */,
+				71DCED4A2A62E35D00EAC3E8 /* View-Extension.swift in Sources */,
 				71F047DF2A60050000957AC3 /* Meteo_exerciseApp.swift in Sources */,
 				71DCED3A2A6154A300EAC3E8 /* APIHandler.swift in Sources */,
+				71DCED482A62D46A00EAC3E8 /* Color-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
