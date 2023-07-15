@@ -59,8 +59,8 @@
 			children = (
 				71F047DE2A60050000957AC3 /* Meteo_exerciseApp.swift */,
 				71F047E02A60050000957AC3 /* ContentView.swift */,
-				71DCED372A61416800EAC3E8 /* WeatherForecast.swift */,
 				71DCED392A6154A300EAC3E8 /* APIHandler.swift */,
+				71DCED372A61416800EAC3E8 /* WeatherForecast.swift */,
 				71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */,
 				71F047E22A60050100957AC3 /* Assets.xcassets */,
 				71F047E42A60050100957AC3 /* Preview Content */,
