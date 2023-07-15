@@ -33,20 +33,20 @@ struct WeatherForecast: Codable {
     
     func getImageCode(weatherCode: Int) -> String {
         switch weatherCode {
-        case 0 : return "ClearSky"
-        case 1, 2, 3 : return "MainlyClear"
-        case 45, 48:  return "Fog"
-        case 51, 53, 55: return "Drizzle"
-        case 56, 57: return "FreezingDrizzle"
-        case 61, 63, 65: return "Rain"
-        case 66, 67: return "FreezingRain"
-        case 71, 73, 75: return "Snowfall"
-        case 77: return "SnowGrains"
-        case 80, 81, 82: return "RainShowers"
-        case 85, 86: return "SnowShowers"
-        case 95: return "Thunderstorm"
-        case 96, 99: return "ThunderstormWithSlightAndHeavyHail"
-        default: return "ClearSky"
+        case 0 : return "sun.max.fill"
+        case 1, 2, 3 : return "cloud.sun.fill"
+        case 45, 48:  return "cloud.fog.fill"
+        case 51, 53, 55: return "cloud.drizzle"
+        case 56, 57: return "cloud.drizzle.fill"
+        case 61, 63, 65: return "cloud.heavyrain.fill"
+        case 66, 67: return "cloud.sleet"
+        case 71, 73, 75: return "cloud.snow.fill"
+        case 77: return "cloud.snow"
+        case 80, 81, 82: return "cloud.rain.fill"
+        case 85, 86: return "cloud.sleet.fill"
+        case 95: return "cloud.bolt.fill"
+        case 96, 99: return "cloud.bolt.rain"
+        default: return "sun.max.fill"
         }
     }
     
