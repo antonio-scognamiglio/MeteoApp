@@ -17,6 +17,65 @@ struct WeatherForecast: Codable {
     let dailyUnits: DailyUnits?
     let daily: Daily?
     
+    var strCoordinates: (latitude: String, longitude: String) {
+        if let lat = (latitude), let long = (longitude) {
+            let stringLat = String(format: "%.2f", lat)
+            let stringLong = String(format: "%.2f", long)
+            return (stringLat, stringLong)
+        } else { return ("", "") }
+    }
+    
+    var strHourlyTemps: [String]{
+        if let hourlyTemps = hourly?.temperature2M {
+            return  hourlyTemps.map { temp in
+                String(temp)
+            }
+        } else {
+            return ["Empty"]
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+           case latitude, longitude
+           case generationtimeMS = "generationtime_ms"
+           case utcOffsetSeconds = "utc_offset_seconds"
+           case timezone
+           case timezoneAbbreviation = "timezone_abbreviation"
+           case elevation
+           case hourlyUnits = "hourly_units"
+           case hourly
+           case dailyUnits = "daily_units"
+           case daily
+    }
+    
+    init(){
+        latitude = Double()
+        longitude = Double()
+        generationtimeMS = Double()
+        utcOffsetSeconds = Int()
+        timezone = String()
+        timezoneAbbreviation = String()
+        elevation = Int()
+        hourlyUnits = HourlyUnits(time: String(), temperature2M: String(), precipitation: String(), weathercode: String())
+        hourly = Hourly(time: [], temperature2M: [], precipitation: [], weathercode: [])
+        dailyUnits = DailyUnits(time: String(), weathercode: String(), temperature2MMax: String(), temperature2MMin: String())
+        daily = Daily(time: [], weathercode: [], temperature2MMax: [], temperature2MMin: [])
+    }
+    
+    init(latitude: Double?, longitude: Double?, generationtimeMS: Double?, utcOffsetSeconds: Int?, timezone: String?, timezoneAbbreviation: String?, elevation: Int?, hourlyUnits: HourlyUnits?, hourly: Hourly?, dailyUnits: DailyUnits?, daily: Daily?) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.generationtimeMS = generationtimeMS
+        self.utcOffsetSeconds = utcOffsetSeconds
+        self.timezone = timezone
+        self.timezoneAbbreviation = timezoneAbbreviation
+        self.elevation = elevation
+        self.hourlyUnits = hourlyUnits
+        self.hourly = hourly
+        self.dailyUnits = dailyUnits
+        self.daily = daily
+    }
+    
     static let example = WeatherForecast(
         latitude: 41.9,
         longitude: 12.5,
@@ -43,6 +102,12 @@ struct Daily: Codable {
         temperature2MMax: [35.8],
         temperature2MMin: [24.4]
     )
+    
+    enum CodingKeys: String, CodingKey {
+           case time, weathercode
+           case temperature2MMax = "temperature_2m_max"
+           case temperature2MMin = "temperature_2m_min"
+    }
 }
 
 
@@ -55,6 +120,12 @@ struct DailyUnits: Codable {
         temperature2MMax: "°C",
         temperature2MMin: "°C"
     )
+    
+    enum CodingKeys: String, CodingKey {
+            case time, weathercode
+            case temperature2MMax = "temperature_2m_max"
+            case temperature2MMin = "temperature_2m_min"
+        }
 }
 
 
@@ -170,10 +241,77 @@ struct Hourly: Codable {
             2
         ]
     )
+    
+    enum CodingKeys: String, CodingKey {
+            case time
+            case temperature2M = "temperature_2m"
+            case precipitation, weathercode
+        }
+}
+
+func getImageCode(for weatherCode: Int) -> String {
+    switch weatherCode {
+    case 0 : return "sun.max.fill"
+    case 1, 2, 3 : return "cloud.sun.fill"
+    case 45, 48:  return "cloud.fog.fill"
+    case 51, 53, 55: return "cloud.drizzle"
+    case 56, 57: return "cloud.drizzle.fill"
+    case 61, 63, 65: return "cloud.heavyrain.fill"
+    case 66, 67: return "cloud.sleet"
+    case 71, 73, 75: return "cloud.snow.fill"
+    case 77: return "cloud.snow"
+    case 80, 81, 82: return "cloud.rain.fill"
+    case 85, 86: return "cloud.sleet.fill"
+    case 95: return "cloud.bolt.fill"
+    case 96, 99: return "cloud.bolt.rain"
+    default: return "sun.max.fill"
+    }
+}
+
+func getWeatherName(for weatherCode: Int) -> String {
+    switch weatherCode {
+    case 0: return "Clear sky"
+    case 1: return "Mainly clear"
+    case 2: return "Partly cloudy"
+    case 3: return "Overcast"
+    case 45: return "Fog"
+    case 48: return "Depositing rime fog"
+    case 51: return "Drizzle light intensity"
+    case 53: return "Drizzle moderate intensity"
+    case 55: return "Drizzle dense intensity"
+    case 56: return "Freezing Drizzle light intensity"
+    case 57: return "Freezing Drizzle dense intensity"
+    case 61: return "Rain slight intensity"
+    case 63: return "Rain moderate intensity"
+    case 65: return "Rain heavy intensity"
+    case 66: return "Freezing Rain Light intensity"
+    case 67: return "Freezing Rain heavy intensity"
+    case 71: return "Snow fall slight intensity"
+    case 73: return "Snow fall moderate intensity"
+    case 75: return "Snow fall heavy intensity"
+    case 77: return "Snow grains"
+    case 80: return "Rain shower slight"
+    case 81: return "Rain shower moderate"
+    case 82: return "Rain shower violent"
+    case 85: return "Snow showers slight"
+    case 86: return "Snow showers heavy"
+    case 95: return "Thunderstorm: Slight or moderate"
+    case 96: return "Thunderstorm with slight hail"
+    case 99: return "Thunderstorm with heavy hail"
+    default: return "Clear sky"
+    }
 }
 
 struct HourlyUnits: Codable {
     let time, temperature2M, precipitation, weathercode: String?
         
     static let example = HourlyUnits(time: "iso8601", temperature2M: "°C", precipitation: "mm", weathercode: "wmo code")
+    
+    enum CodingKeys: String, CodingKey {
+           case time
+           case temperature2M = "temperature_2m"
+           case precipitation, weathercode
+       }
 }
+
+

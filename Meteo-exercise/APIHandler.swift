@@ -26,6 +26,7 @@ class APIHandler {
         let verifiedData = try mapResponse(response: (data, response))
 
 //        print(String(decoding: verifiedData, as: UTF8.self))
+        
         let weatherObject = try JSONDecoder().decode(WeatherForecast.self, from: verifiedData)
         print("Tutto a posto")
         return weatherObject
