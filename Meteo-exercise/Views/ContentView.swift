@@ -50,10 +50,13 @@ struct ContentView: View {
                             }
                         }
                     }
+                    WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
+                        .padding(.top)
                 }
                 Spacer()
-            }
                 
+            }
+            
             .padding()
         }
         .task {

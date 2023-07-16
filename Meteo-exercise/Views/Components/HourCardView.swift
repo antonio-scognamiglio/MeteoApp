@@ -42,6 +42,6 @@ struct HourCardView: View {
 
 struct HourCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HourCardView(hour: "2023-07-14T10:00", weatherCode: 2, temperature: "30")
+        HourCardView(hour: "2023-07-14T10:00", weatherCode: 0, temperature: "30")
     }
 }

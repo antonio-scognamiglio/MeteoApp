@@ -19,36 +19,45 @@ struct WeekWeatherView: View {
     }
     var body: some View {
         
-        ScrollView {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(.cardColor2)
-        
-                VStack {
-                    ForEach(0...numberOfDays - 1, id: \.self){ i in
-                        HStack(spacing: 30) {
-                            Group {
-                                if i != 0 {
-                                    Text(formatWeekDay(from: dailyWeather.time?[i]).capitalized)
-                                } else {
-                                    Text("Oggi")
-                                }
-                                Text("\(dailyWeather.stringTempMin[i])˚ - \(dailyWeather.stringTempMax[i])˚").fixedSize()
-                                Image(systemName: getImage(for: dailyWeather.weathercode?[i] ?? 0))
-                            }
-                                .foregroundColor(Color(.white))
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                        }
-    //                    .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    Spacer()
+//            ZStack {
+                
+                        
+//                        ScrollView {
+        VStack {
+            ForEach(0...numberOfDays - 1, id: \.self){ i in
+                                    HStack {
+                                        Group {
+                                            if i != 0 {
+                                                Text(formatWeekDay(from: dailyWeather.time?[i]).capitalized)
+                                                    .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
+                                            } else {
+                                                Text("Oggi")
+                                                    .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
+                                            }
+                                            Spacer()
+                                            Text("\(dailyWeather.stringTempMin[i])˚ - \(dailyWeather.stringTempMax[i])˚").fixedSize()
+                                            .frame(width: UIScreen.main.bounds.width * 0.25)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: getImage(for: dailyWeather.weathercode?[i] ?? 0))
+                                        }
+                                            .foregroundColor(Color(.white))
+                                            .font(.title3)
+                                            .fontWeight(.semibold)
+                                    }
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 10)
+                if i != numberOfDays - 1 {
+                    Divider()
                 }
-                .padding()
             }
-            .frame(minHeight: UIScreen.main.bounds.height * 0.5)
         }
-//        .padding()
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(.cardColor2)
+        }
         
     }
 }

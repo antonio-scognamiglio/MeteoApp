@@ -36,7 +36,6 @@ struct WeatherForecast: Codable {
     }
     
     
-    
     enum CodingKeys: String, CodingKey {
            case latitude, longitude
            case generationtimeMS = "generationtime_ms"
