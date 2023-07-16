@@ -28,7 +28,7 @@ struct WeatherForecast: Codable {
     var strHourlyTemps: [String]{
         if let hourlyTemps = hourly?.temperature2M {
             return  hourlyTemps.map { temp in
-                String(temp)
+                String(Int(temp.rounded()))
             }
         } else {
             return ["Empty"]
@@ -101,7 +101,8 @@ struct Daily: Codable {
     var stringTempMax: [String] {
         if let temps = temperature2MMax {
             return temps.map { temp in
-                temp.convertToString()
+//                temp.convertToString()
+                String(Int(temp))
             }
         } else {
             return []
@@ -111,7 +112,8 @@ struct Daily: Codable {
     var stringTempMin: [String] {
         if let temps = temperature2MMin {
             return temps.map { temp in
-                temp.convertToString()
+//                temp.convertToString()
+                String(Int(temp))
             }
         } else {
             return []

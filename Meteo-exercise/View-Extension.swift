@@ -67,7 +67,8 @@ extension View {
             // iso8601
             apiDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
             guard let newDate = apiDateFormatter.date(from: date) else { return "Failed conversion"}
-            return newDate.formatted(date: .omitted, time: .shortened)
+            return newDate.formatted(.dateTime.hour().locale(Locale(identifier: "it")))
+//            return newDate.formatted(date: .omitted, time: .shortened)
         } else {
             return "Invalid input Date"
         }
@@ -80,7 +81,7 @@ extension View {
             guard let newDate = apiDateFormatter.date(from: date) else { return "Failed conversion"}
             let weekDateFormatter = DateFormatter()
             weekDateFormatter.dateFormat = "EEEE"
-            
+            weekDateFormatter.locale = Locale(identifier: "it_IT")
             return weekDateFormatter.string(from: newDate)
         } else {
             return "Invalid input Date"
