@@ -28,7 +28,7 @@ struct WeekWeatherView: View {
                     ForEach(0...numberOfDays - 1, id: \.self){ i in
                         HStack(spacing: 30) {
                             Group {
-                                Text(dailyWeather.time?[i] ?? Daily.example.time![0])
+                                Text(formatWeekDay(from: dailyWeather.time?[i]))
                                 Text("\(dailyWeather.stringTempMin[i])˚ - \(dailyWeather.stringTempMax[i])˚").fixedSize()
                                 Image(systemName: getImage(for: dailyWeather.weathercode?[i] ?? 0))
                             }

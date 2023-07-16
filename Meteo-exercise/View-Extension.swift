@@ -72,4 +72,18 @@ extension View {
             return "Invalid input Date"
         }
     }
+    
+    func formatWeekDay(from date: String?) -> String {
+        if let date = date {
+            let apiDateFormatter = DateFormatter()
+            apiDateFormatter.dateFormat = "yyyy-MM-dd"
+            guard let newDate = apiDateFormatter.date(from: date) else { return "Failed conversion"}
+            let weekDateFormatter = DateFormatter()
+            weekDateFormatter.dateFormat = "EEEE"
+            
+            return weekDateFormatter.string(from: newDate)
+        } else {
+            return "Invalid input Date"
+        }
+    }
 }
