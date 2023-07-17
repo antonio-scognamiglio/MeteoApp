@@ -68,9 +68,11 @@ struct ContentView: View {
 //                            .id(weatherForecast.id)
 //                            .padding(.bottom)
                         LocationButton(.currentLocation) {
+                            viewModel.isLoading = true
                             viewModel.requestAllowOnceLocationPermission()
-                          
+                        
                         }
+    
                         .cornerRadius(15)
                         .foregroundColor(.white)
                         .tint(.cardColor2)
@@ -82,7 +84,8 @@ struct ContentView: View {
                 }
                 .padding()
             }
-        .showLoadingView(isShowingLoading: $isShowingLoading, message: "Caricamento in corso ...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
+        .showLoadingView(isShowingLoading: $isShowingLoading, message: "Caricamento in corso...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
+        .showLoadingView(isShowingLoading: $viewModel.isLoading, message: "Ottengo la posizione...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
     
             .task {
                 do {
@@ -100,18 +103,21 @@ struct ContentView: View {
             .onChange(of: viewModel.coordinates) { _ in
                 Task {
                     do {
-                        isShowingLoading = true
                         weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
 //                        withAnimation {
 //                            weatherForecast.id = UUID()
 //                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3 ){
-                            isShowingLoading = false
-                            hasFetched = true
-                        }
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 3 ){
+//                            isShowingLoading = false
+//                            hasFetched = true
+                        viewModel.isLoading = false
+                        hasFetched = true
+//                        }
                     } catch {
-                        isShowingLoading = false
+                        viewModel.isLoading = false
                         hasFetched = false
+//                        isShowingLoading = false
+//                        hasFetched = false
                         print(error.localizedDescription)
                     }
                 }

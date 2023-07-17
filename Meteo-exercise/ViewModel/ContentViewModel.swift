@@ -13,7 +13,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
 //    @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 41.9027835, longitude: 12.4963655)
     @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 33.9027835, longitude: 18.4963655)
-    
+    @Published var isLoading = false
     var strCoordinates: (latitude: String, longitude: String) {
         let stringLat = String(format: "%.2f", coordinates.latitude)
         let stringLong = String(format: "%.2f", coordinates.longitude)
@@ -29,7 +29,12 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     
     func requestAllowOnceLocationPermission() {
-        locationManager.requestLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        withAnimation {
+            locationManager.requestLocation()
+        }
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
