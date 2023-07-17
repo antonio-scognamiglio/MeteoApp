@@ -16,12 +16,15 @@ struct LoadingViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .blur(radius: isShowingLoading ? 5 : 0)
             .overlay {
                 if isShowingLoading {
                     ZStack {
                         if isShowingBackgroundColor {
-                            backgroundColor
-                                .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 5)
+                            Color.cardColor2
+                                .colorMultiply(.backgroundColor2)
+                                .frame(width: UIScreen.main.bounds.width / 1.9, height: UIScreen.main.bounds.height / 4.9)
+                                .opacity(0.8)
                                 .cornerRadius(15)
                         }
                         VStack(spacing: 20) {
