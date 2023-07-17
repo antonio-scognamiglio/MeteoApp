@@ -11,7 +11,8 @@ import SwiftUI
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
-    @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 41.9027835, longitude: 12.4963655)
+//    @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 41.9027835, longitude: 12.4963655)
+    @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 33.9027835, longitude: 18.4963655)
     
     var strCoordinates: (latitude: String, longitude: String) {
         let stringLat = String(format: "%.2f", coordinates.latitude)

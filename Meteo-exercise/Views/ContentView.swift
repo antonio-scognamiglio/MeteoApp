@@ -53,6 +53,8 @@ struct ContentView: View {
                                 }
                             }
                         }
+                        .id(weatherForecast.id)
+                        
                         Text("Previsione Settimanale")
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
@@ -60,6 +62,7 @@ struct ContentView: View {
                             .padding(.top)
                         
                         WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
+                            .id(weatherForecast.id)
 //                            .padding(.bottom)
                         LocationButton(.currentLocation) {
                             viewModel.requestAllowOnceLocationPermission()
@@ -81,7 +84,7 @@ struct ContentView: View {
             .task {
                 do {
                     isShowingLoading = true
-                    weatherForecast = try await APIHandler.shared.fetchWeatherForecast()
+                    weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
                     isShowingLoading = false
                     hasFetched = true
                 } catch {
@@ -91,6 +94,23 @@ struct ContentView: View {
                 }
         }
         
+            .onChange(of: viewModel.coordinates) { _ in
+                Task {
+                    do {
+                        isShowingLoading = true
+                        weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
+                        withAnimation {
+                            weatherForecast.id = UUID()
+                        }
+                        isShowingLoading = false
+                        hasFetched = true
+                    } catch {
+                        isShowingLoading = false
+                        hasFetched = false
+                        print(error.localizedDescription)
+                    }
+                }
+            }
     }
 }
     

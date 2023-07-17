@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherForecast: Codable {
+    var id = UUID()
     let latitude, longitude, generationtimeMS: Double?
     let utcOffsetSeconds: Int?
     let timezone, timezoneAbbreviation: String?
