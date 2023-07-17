@@ -6,69 +6,123 @@
 //
 
 import SwiftUI
+import CoreLocationUI
 
 struct ContentView: View {
     @State var weatherForecast = WeatherForecast()
     @State var hasFetched = false
+    @State var isShowingLoading = false
+    let dateComponents = Calendar.current.dateComponents([.hour], from: Date.now)
+    @StateObject var viewModel = ContentViewModel()
     
-    var backgroundColor = #colorLiteral(red: 0.5262038708, green: 0.7596305013, blue: 0.912558496, alpha: 1)
-    var backgroundColor2 = #colorLiteral(red: 0.968627451, green: 0.9490196078, blue: 0.8509803922, alpha: 1)
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
     
     var body: some View {
-        ZStack {
-            Color(backgroundColor).ignoresSafeArea()
-            VStack {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Latitudine: \(weatherForecast.strCoordinates.latitude)")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                        Text("Longitudine: \(weatherForecast.strCoordinates.longitude)")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                    }
-                    Spacer()
-                    Image(systemName: getImageCode(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
-                        .resizable()
-                        .foregroundColor(.yellow)
-                        .scaledToFit()
-                }
-                
-                Text("Today")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                if hasFetched {
-                    ForEach(weatherForecast.strHourlyTemps, id: \.self){ temp in
-                            Text("Temperature: \(temp)")
+
+        NavigationView {
+            ZStack(alignment: .top) {
+                    Color.backgroundColor.ignoresSafeArea()
+                    VStack {
+                        HStack{
+                            VStack(alignment: .leading) {
+                                Text("Latitudine: \(viewModel.coordinates.latitude)")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                Text("Longitudine: \(viewModel.coordinates.longitude)")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                            }
+                            Spacer()
+                            Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
+                                .font(.system(size: 64))
+                                .foregroundColor(.yellow)
+                                .padding(.trailing)
+
                         }
+                        .padding(.vertical)
+                        
+                        if hasFetched {
+                            
+                            Text("Previsione Oraria")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(dateComponents.hour! ... 24, id: \.self){ i in
+                                        HourCardView(hour: weatherForecast.hourly?.time?[i] ?? "Error", weatherCode: weatherForecast.hourly?.weathercode?[i] ?? 0, temperature: weatherForecast.strHourlyTemps[i])
+     
+                                    }
+                                }
+                            }
+                            .animation(.easeIn, value: viewModel.coordinates)
+                            .scrollIndicators(.hidden)
+                            
+                            Text("Previsione Settimanale")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top)
+                            
+                            WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
+                                .animation(.easeIn, value: viewModel.coordinates)
+                            LocationButton(.currentLocation) {
+                                viewModel.isLoading = true
+                                viewModel.requestAllowOnceLocationPermission()
+                            
+                            }
+                            .cornerRadius(15)
+                            .foregroundColor(.white)
+                            .tint(.cardColor2)
+                            .symbolVariant(.fill)
+                            .padding(.top)
+                        }
+                    }
+                    .padding()
                 }
+            .showLoadingView(isShowingLoading: $isShowingLoading, message: "Caricamento in corso...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
+            .showLoadingView(isShowingLoading: $viewModel.isLoading, message: "Ottengo la posizione...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
+        
+                .task {
+                    do {
+                        isShowingLoading = true
+                        weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
+                        isShowingLoading = false
+                        hasFetched = true
+                    } catch {
+                        isShowingLoading = false
+                        hasFetched = false
+                        print(error.localizedDescription)
+                    }
             }
-                
-            .padding()
+            
+                .onChange(of: viewModel.coordinates) { _ in
+                    Task {
+                        do {
+                            weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
+                            viewModel.isLoading = false
+                            hasFetched = true
+
+                        } catch {
+                            viewModel.isLoading = false
+                            hasFetched = false
+
+                            print(error.localizedDescription)
+                        }
+                    }
+            }
+                .navigationTitle("Meteo")
         }
-        .task {
-            do {
-                weatherForecast = try await APIHandler.shared.fetchWeatherForecast()
-                hasFetched = true
-//                if let temps = weatherForecast.hourly?.temperature2M {
-//                    for temp in temps {
-//                        print(temp)
-//                    }
-//                } else {
-//                    print("Non c'è niente ...")
-//                }
-            } catch {
-                hasFetched = false
-                print(error.localizedDescription)
-            }
-    }
     }
 }
+    
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(weatherForecast: WeatherForecast.example)
+        ContentView()
     }
 }
