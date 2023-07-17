@@ -47,7 +47,7 @@ struct WeekWeatherView: View {
                                             .fontWeight(.semibold)
                                     }
                                     .padding(.horizontal)
-                                    .padding(.vertical, 10)
+                                    .padding(.vertical, 7)
                 if i != numberOfDays - 1 {
                     Divider()
                 }

@@ -15,8 +15,8 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        NavigationStack {
-            ZStack {
+
+            ZStack(alignment: .top) {
                 Color.backgroundColor.ignoresSafeArea()
                 VStack {
                     HStack{
@@ -82,7 +82,7 @@ struct ContentView: View {
                     print(error.localizedDescription)
                 }
         }
-        }
+        
     }
 }
     
