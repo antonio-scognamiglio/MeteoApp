@@ -44,7 +44,7 @@ struct ContentView: View {
                 ZStack(alignment: .top) {
                         Color.backgroundColor.ignoresSafeArea()
                         VStack {
-                                HStack{
+                            HStack(alignment: .lastTextBaseline) {
                                     VStack(alignment: .leading) {
                                     
                                         Text(selectedLocation ?? "Posizione attuale")
@@ -65,11 +65,9 @@ struct ContentView: View {
                                     Spacer()
                                     
                                     Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
-                                        .font(.system(size: 60))
+                                        .font(.system(size: 70))
                                         .foregroundColor(.yellow)
-                                        .padding(.trailing, 30)
-                                        
-
+                                        .padding(.trailing, 20)
                                 }
                                 .padding(.vertical)
                                 
