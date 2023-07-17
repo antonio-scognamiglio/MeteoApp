@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocationUI
 
 struct ContentView: View {
     @State var weatherForecast = WeatherForecast()
@@ -31,17 +32,16 @@ struct ContentView: View {
                     Spacer()
                     Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
                         .font(.system(size: 64))
-                        .foregroundColor(.yellow)
+                        .foregroundColor(.yellow) 
 
                 }
                 .padding(.vertical)
                 
-                Text("Today")
-                    .foregroundColor(.white)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
                 if hasFetched {
+                    Text("Previsione Oraria")
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(dateComponents.hour! ... 24, id: \.self){ i in
@@ -50,13 +50,25 @@ struct ContentView: View {
                             }
                         }
                     }
-                    WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
+                    Text("Previsione Settimanale")
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top)
+                    
+                    WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
+                        .padding(.bottom)
+                    LocationButton(.currentLocation) {
+                        print("")
+                    }
+                    .cornerRadius(15)
+                    .foregroundColor(.white)
+                    .tint(.cardColor2)
+                    .symbolVariant(.fill)
                 }
                 Spacer()
-                
+
             }
-            
             .padding()
         }
         .task {

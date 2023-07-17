@@ -11,7 +11,7 @@ import SwiftUI
 struct Meteo_exerciseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           ContentView()
         }
     }
 }
