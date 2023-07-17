@@ -27,20 +27,21 @@ struct ContentView: View {
                     VStack {
                         HStack{
                             VStack(alignment: .leading) {
-                                Text("Latitudine: \(viewModel.coordinates.latitude)")
-                                    .font(.title3)
+                                Text("Latitudine: \t \(viewModel.coordinates.latitude)")
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.white)
-                                Text("Longitudine: \(viewModel.coordinates.longitude)")
-                                    .font(.title3)
+                                Text("Longitudine: \t \(viewModel.coordinates.longitude)")
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.white)
                             }
                             Spacer()
+                            
                             Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
-                                .font(.system(size: 64))
+                                .font(.system(size: 60))
                                 .foregroundColor(.yellow)
-                                .padding(.trailing)
+                                .padding(.trailing, 30)
 
                         }
                         .padding(.vertical)
