@@ -100,8 +100,11 @@ struct ContentView: View {
                                     WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
                                         .animation(.easeIn, value: viewModel.coordinates)
                                     LocationButton(.currentLocation) {
-                                        viewModel.isLoading = true
-                                        viewModel.requestAllowOnceLocationPermission()
+                                        withAnimation {
+                                            viewModel.isLoading = true
+                                            selectedLocation = nil
+                                            viewModel.requestAllowOnceLocationPermission()
+                                        }
                                     
                                     }
                                     .cornerRadius(15)
@@ -124,6 +127,7 @@ struct ContentView: View {
                                     Button {
                                         Task {
                                             do {
+                                                hideKeyboard()
                                                 searchText = ""
                                                 isShowingLoading = true
                                                 weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: location.latitude ?? "41.9027835", longitude: location.longitude ?? "12.4963655")
@@ -143,7 +147,7 @@ struct ContentView: View {
                                         //
                                     } label: {
                                         Text(location.comune ?? "Errore")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(Color.primary)
                                     }
                                 }
                             }
@@ -176,7 +180,7 @@ struct ContentView: View {
                             do {
                                 weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
                                 withAnimation {
-                                    selectedLocation = nil
+                                    
                                     viewModel.isLoading = false
                                     hasFetched = true
                                 }
