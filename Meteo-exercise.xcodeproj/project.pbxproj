@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		71A1745B2A65492300CAAED0 /* LoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1745A2A65492300CAAED0 /* LoadingViewModifier.swift */; };
 		71A1745D2A655A0600CAAED0 /* Coordinate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1745C2A655A0600CAAED0 /* Coordinate-Extension.swift */; };
+		71A1745F2A65884000CAAED0 /* Bundle-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1745E2A65884000CAAED0 /* Bundle-Extension.swift */; };
+		71A174612A65898300CAAED0 /* italy_geo.json in Resources */ = {isa = PBXBuildFile; fileRef = 71A174602A65898200CAAED0 /* italy_geo.json */; };
+		71A174632A658A1500CAAED0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A174622A658A1500CAAED0 /* Location.swift */; };
 		71DCED382A61416800EAC3E8 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED372A61416800EAC3E8 /* WeatherForecast.swift */; };
 		71DCED3A2A6154A300EAC3E8 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED392A6154A300EAC3E8 /* APIHandler.swift */; };
 		71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		71A1745A2A65492300CAAED0 /* LoadingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModifier.swift; sourceTree = "<group>"; };
 		71A1745C2A655A0600CAAED0 /* Coordinate-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate-Extension.swift"; sourceTree = "<group>"; };
+		71A1745E2A65884000CAAED0 /* Bundle-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Extension.swift"; sourceTree = "<group>"; };
+		71A174602A65898200CAAED0 /* italy_geo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = italy_geo.json; sourceTree = "<group>"; };
+		71A174622A658A1500CAAED0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		71DCED372A61416800EAC3E8 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		71DCED392A6154A300EAC3E8 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				71DCED372A61416800EAC3E8 /* WeatherForecast.swift */,
+				71A174622A658A1500CAAED0 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +133,8 @@
 				71DCED492A62E35D00EAC3E8 /* View-Extension.swift */,
 				71DCED4D2A630EFF00EAC3E8 /* Double-Extension.swift */,
 				71A1745C2A655A0600CAAED0 /* Coordinate-Extension.swift */,
+				71A1745E2A65884000CAAED0 /* Bundle-Extension.swift */,
+				71A174602A65898200CAAED0 /* italy_geo.json */,
 				71F047E22A60050100957AC3 /* Assets.xcassets */,
 				71F047E42A60050100957AC3 /* Preview Content */,
 			);
@@ -200,6 +209,7 @@
 			files = (
 				71F047E62A60050100957AC3 /* Preview Assets.xcassets in Resources */,
 				71F047E32A60050100957AC3 /* Assets.xcassets in Resources */,
+				71A174612A65898300CAAED0 /* italy_geo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,9 +223,11 @@
 				71A1745B2A65492300CAAED0 /* LoadingViewModifier.swift in Sources */,
 				71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */,
 				71F047E12A60050000957AC3 /* ContentView.swift in Sources */,
+				71A1745F2A65884000CAAED0 /* Bundle-Extension.swift in Sources */,
 				71DCED4C2A63065100EAC3E8 /* WeekWeatherView.swift in Sources */,
 				71DCED462A62B3B400EAC3E8 /* HourCardView.swift in Sources */,
 				71DCED4E2A630EFF00EAC3E8 /* Double-Extension.swift in Sources */,
+				71A174632A658A1500CAAED0 /* Location.swift in Sources */,
 				71DCED382A61416800EAC3E8 /* WeatherForecast.swift in Sources */,
 				71DCED4A2A62E35D00EAC3E8 /* View-Extension.swift in Sources */,
 				71A1745D2A655A0600CAAED0 /* Coordinate-Extension.swift in Sources */,
