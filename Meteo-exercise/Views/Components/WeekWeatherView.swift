@@ -19,37 +19,36 @@ struct WeekWeatherView: View {
     }
     var body: some View {
         
-//            ZStack {
-                
-                        
-//                        ScrollView {
         VStack {
-            ForEach(0...numberOfDays - 1, id: \.self){ i in
-                                    HStack {
-                                        Group {
-                                            if i != 0 {
-                                                Text(formatWeekDay(from: dailyWeather.time?[i]).capitalized)
-                                                    .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
-                                            } else {
-                                                Text("Oggi")
-                                                    .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
+            
+            ScrollView {
+                ForEach(0...numberOfDays - 1, id: \.self){ i in
+                                        HStack {
+                                            Group {
+                                                if i != 0 {
+                                                    Text(formatWeekDay(from: dailyWeather.time?[i]).capitalized)
+                                                        .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
+                                                } else {
+                                                    Text("Oggi")
+                                                        .frame(width: UIScreen.main.bounds.width * 0.25, alignment: .leading)
+                                                }
+                                                Spacer()
+                                                Text("\(dailyWeather.stringTempMin[i])˚ - \(dailyWeather.stringTempMax[i])˚").fixedSize()
+                                                .frame(width: UIScreen.main.bounds.width * 0.25)
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: getImage(for: dailyWeather.weathercode?[i] ?? 0))
                                             }
-                                            Spacer()
-                                            Text("\(dailyWeather.stringTempMin[i])˚ - \(dailyWeather.stringTempMax[i])˚").fixedSize()
-                                            .frame(width: UIScreen.main.bounds.width * 0.25)
-                                            
-                                            Spacer()
-                                            
-                                            Image(systemName: getImage(for: dailyWeather.weathercode?[i] ?? 0))
+                                                .foregroundColor(Color(.white))
+                                                .font(.title3)
+                                                .fontWeight(.semibold)
                                         }
-                                            .foregroundColor(Color(.white))
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                    }
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 7)
-                if i != numberOfDays - 1 {
-                    Divider()
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 5)
+                    if i != numberOfDays - 1 {
+                        Divider()
+                    }
                 }
             }
         }

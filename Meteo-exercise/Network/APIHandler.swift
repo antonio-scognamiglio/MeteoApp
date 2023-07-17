@@ -12,7 +12,7 @@ class APIHandler {
     
     private init() { }
     
-    func fetchWeatherForecast(latitude: Double = 41.9027835, longitude: Double = 12.4963655, forecastDays: Int = 7) async throws -> WeatherForecast {
+    func fetchWeatherForecast(latitude: String = "41.9027835", longitude: String = "12.4963655", forecastDays: Int = 7) async throws -> WeatherForecast {
         let endpoint = "https://api.open-meteo.com/v1/forecast"
         let query = "?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m,precipitation,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=GMT&forecast_days=\(forecastDays)"
         
@@ -28,7 +28,7 @@ class APIHandler {
 //        print(String(decoding: verifiedData, as: UTF8.self))
         
         let weatherObject = try JSONDecoder().decode(WeatherForecast.self, from: verifiedData)
-        print("Tutto a posto")
+        
         return weatherObject
     }
 }

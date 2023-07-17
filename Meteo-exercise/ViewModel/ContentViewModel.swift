@@ -32,6 +32,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         guard let latestLocation = locations.first else {
             // show an error
             return
@@ -41,6 +42,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
             withAnimation {
                 self.coordinates = latestLocation.coordinate
             }
+            
             print(coordinates)
         }
     }
@@ -48,4 +50,5 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
+    
 }

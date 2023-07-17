@@ -34,7 +34,7 @@ struct HourCardView: View {
                         .font(.headline)
                 }
             }
-            .frame(width: UIScreen.main.bounds.width * 0.28, height: UIScreen.main.bounds.height * 0.14)
+            .frame(width: UIScreen.main.bounds.width * 0.27, height: UIScreen.main.bounds.height * 0.13)
 //            .frame(width: geo.size.width, height: geo.size.height)
 //        }
     }

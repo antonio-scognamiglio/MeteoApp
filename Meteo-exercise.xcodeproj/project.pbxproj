@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71A1745B2A65492300CAAED0 /* LoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1745A2A65492300CAAED0 /* LoadingViewModifier.swift */; };
 		71DCED382A61416800EAC3E8 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED372A61416800EAC3E8 /* WeatherForecast.swift */; };
 		71DCED3A2A6154A300EAC3E8 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED392A6154A300EAC3E8 /* APIHandler.swift */; };
 		71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71A1745A2A65492300CAAED0 /* LoadingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModifier.swift; sourceTree = "<group>"; };
 		71DCED372A61416800EAC3E8 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		71DCED392A6154A300EAC3E8 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		71DCED3B2A6195C100EAC3E8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				71DCED572A6534C900EAC3E8 /* ViewModel */,
 				71DCED432A62B1E400EAC3E8 /* Network */,
 				71DCED472A62D46A00EAC3E8 /* Color-Extension.swift */,
+				71A1745A2A65492300CAAED0 /* LoadingViewModifier.swift */,
 				71DCED492A62E35D00EAC3E8 /* View-Extension.swift */,
 				71DCED4D2A630EFF00EAC3E8 /* Double-Extension.swift */,
 				71F047E22A60050100957AC3 /* Assets.xcassets */,
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A1745B2A65492300CAAED0 /* LoadingViewModifier.swift in Sources */,
 				71DCED3C2A6195C100EAC3E8 /* NetworkError.swift in Sources */,
 				71F047E12A60050000957AC3 /* ContentView.swift in Sources */,
 				71DCED4C2A63065100EAC3E8 /* WeekWeatherView.swift in Sources */,

@@ -11,12 +11,13 @@ import CoreLocationUI
 struct ContentView: View {
     @State var weatherForecast = WeatherForecast()
     @State var hasFetched = false
+    @State var isShowingLoading = false
     let dateComponents = Calendar.current.dateComponents([.hour], from: Date.now)
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
 
-            ZStack(alignment: .top) {
+        ZStack(alignment: .top) {
                 Color.backgroundColor.ignoresSafeArea()
                 VStack {
                     HStack{
@@ -59,25 +60,32 @@ struct ContentView: View {
                             .padding(.top)
                         
                         WeekWeatherView(dailyWeather: weatherForecast.daily ?? Daily.example)
-                            .padding(.bottom)
+//                            .padding(.bottom)
                         LocationButton(.currentLocation) {
                             viewModel.requestAllowOnceLocationPermission()
+                          
                         }
                         .cornerRadius(15)
                         .foregroundColor(.white)
                         .tint(.cardColor2)
                         .symbolVariant(.fill)
+                        .padding(.top)
                     }
                    
 
                 }
                 .padding()
             }
+        .showLoadingView(isShowingLoading: $isShowingLoading, message: "Caricamento in corso ...", isShowingBackgroundColor: true, backgroundColor: .cardColor2)
+    
             .task {
                 do {
+                    isShowingLoading = true
                     weatherForecast = try await APIHandler.shared.fetchWeatherForecast()
+                    isShowingLoading = false
                     hasFetched = true
                 } catch {
+                    isShowingLoading = false
                     hasFetched = false
                     print(error.localizedDescription)
                 }
