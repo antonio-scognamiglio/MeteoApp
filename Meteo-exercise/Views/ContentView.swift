@@ -53,21 +53,23 @@ struct ContentView: View {
                                             .foregroundColor(.white)
                                             .padding(.bottom, 2)
                                         
-                                        Text("Latitudine: \t \(viewModel.coordinates.latitude)")
+                                        Text("Latitudine: \t\t\(viewModel.coordinates.latitude)")
                                             .font(.headline)
                                             .fontWeight(.semibold)
                                             .foregroundColor(.white)
-                                        Text("Longitudine: \t \(viewModel.coordinates.longitude)")
+                                            .fixedSize()
+                                        Text("Longitudine: \t\(viewModel.coordinates.longitude)")
                                             .font(.headline)
                                             .fontWeight(.semibold)
                                             .foregroundColor(.white)
+                                            .fixedSize()
                                     }
                                     Spacer()
                                     
                                     Image(systemName: getImage(for: (weatherForecast.daily?.weathercode?.first ?? WeatherForecast.example.daily?.weathercode?.first)!))
                                         .font(.system(size: 70))
                                         .foregroundColor(.yellow)
-                                        .padding(.trailing, 20)
+//                                        .padding(.trailing, 20)
                                 }
                                 .padding(.vertical)
                                 
