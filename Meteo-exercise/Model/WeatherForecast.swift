@@ -18,14 +18,6 @@ struct WeatherForecast: Codable {
     let dailyUnits: DailyUnits?
     let daily: Daily?
     
-//    var strCoordinates: (latitude: String, longitude: String) {
-//        if let lat = (latitude), let long = (longitude) {
-//            let stringLat = String(format: "%.2f", lat)
-//            let stringLong = String(format: "%.2f", long)
-//            return (stringLat, stringLong)
-//        } else { return ("", "") }
-//    }
-    
     var strHourlyTemps: [String]{
         if let hourlyTemps = hourly?.temperature2M {
             return  hourlyTemps.map { temp in

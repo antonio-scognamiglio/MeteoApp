@@ -27,14 +27,14 @@ struct HourCardView: View {
                         .foregroundColor(Color(.white))
                         .font(.headline)
                     Image(systemName: getImage(for: weatherCode))
-                        .font(.system(size: 32))
+                        .font(.system(size: 28))
                         .foregroundColor(.yellow)
                     Text("\(temperature)˚")
                         .foregroundColor(Color(.white))
                         .font(.headline)
                 }
             }
-            .frame(width: UIScreen.main.bounds.width * 0.27, height: UIScreen.main.bounds.height * 0.13)
+            .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.height * 0.12)
 //            .frame(width: geo.size.width, height: geo.size.height)
 //        }
     }
