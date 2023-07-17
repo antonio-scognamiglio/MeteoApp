@@ -75,7 +75,6 @@ struct ContentView: View {
                                 
                                 
                                 if hasFetched {
-                                    
                                     Text("Previsione Oraria")
                                         .foregroundColor(.white)
                                         .fontWeight(.semibold)
