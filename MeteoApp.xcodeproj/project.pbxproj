@@ -202,11 +202,12 @@
 			};
 			buildConfigurationList = 71F047D62A60050000957AC3 /* Build configuration list for PBXProject "MeteoApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = it;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 71F047D22A60050000957AC3;
 			productRefGroup = 71F047DC2A60050000957AC3 /* Products */;
