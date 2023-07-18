@@ -42,7 +42,7 @@
 		71DCED4B2A63065100EAC3E8 /* WeekWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherView.swift; sourceTree = "<group>"; };
 		71DCED4D2A630EFF00EAC3E8 /* Double-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-Extension.swift"; sourceTree = "<group>"; };
 		71DCED582A65388600EAC3E8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		71F047DB2A60050000957AC3 /* Meteo-exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meteo-exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F047DB2A60050000957AC3 /* MeteoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F047DE2A60050000957AC3 /* Meteo_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteo_App.swift; sourceTree = "<group>"; };
 		71F047E02A60050000957AC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		71F047E22A60050100957AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		71F047D22A60050000957AC3 = {
 			isa = PBXGroup;
 			children = (
-				71F047DD2A60050000957AC3 /* Meteo-exercise */,
+				71F047DD2A60050000957AC3 /* MeteoApp */,
 				71F047DC2A60050000957AC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,12 +135,12 @@
 		71F047DC2A60050000957AC3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71F047DB2A60050000957AC3 /* Meteo-exercise.app */,
+				71F047DB2A60050000957AC3 /* MeteoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		71F047DD2A60050000957AC3 /* Meteo-exercise */ = {
+		71F047DD2A60050000957AC3 /* MeteoApp */ = {
 			isa = PBXGroup;
 			children = (
 				71F047DE2A60050000957AC3 /* Meteo_App.swift */,
@@ -154,7 +154,7 @@
 				71F047E22A60050100957AC3 /* Assets.xcassets */,
 				71F047E42A60050100957AC3 /* Preview Content */,
 			);
-			path = "Meteo-exercise";
+			path = MeteoApp;
 			sourceTree = "<group>";
 		};
 		71F047E42A60050100957AC3 /* Preview Content */ = {
@@ -168,9 +168,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		71F047DA2A60050000957AC3 /* Meteo-exercise */ = {
+		71F047DA2A60050000957AC3 /* MeteoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71F047E92A60050100957AC3 /* Build configuration list for PBXNativeTarget "Meteo-exercise" */;
+			buildConfigurationList = 71F047E92A60050100957AC3 /* Build configuration list for PBXNativeTarget "MeteoApp" */;
 			buildPhases = (
 				71F047D72A60050000957AC3 /* Sources */,
 				71F047D82A60050000957AC3 /* Frameworks */,
@@ -180,9 +180,9 @@
 			);
 			dependencies = (
 			);
-			name = "Meteo-exercise";
+			name = MeteoApp;
 			productName = "Meteo-exercise";
-			productReference = 71F047DB2A60050000957AC3 /* Meteo-exercise.app */;
+			productReference = 71F047DB2A60050000957AC3 /* MeteoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +213,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71F047DA2A60050000957AC3 /* Meteo-exercise */,
+				71F047DA2A60050000957AC3 /* MeteoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -378,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Meteo-exercise/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MeteoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = WK692DVRUX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -408,7 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Meteo-exercise/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MeteoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = WK692DVRUX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -443,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71F047E92A60050100957AC3 /* Build configuration list for PBXNativeTarget "Meteo-exercise" */ = {
+		71F047E92A60050100957AC3 /* Build configuration list for PBXNativeTarget "MeteoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71F047EA2A60050100957AC3 /* Debug */,
