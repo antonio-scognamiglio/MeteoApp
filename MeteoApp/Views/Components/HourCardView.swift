@@ -18,7 +18,6 @@ struct HourCardView: View {
     }
     
     var body: some View {
-//        GeometryReader { geo in
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundColor(.cardColor2)
@@ -35,8 +34,6 @@ struct HourCardView: View {
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.height * 0.12)
-//            .frame(width: geo.size.width, height: geo.size.height)
-//        }
     }
 }
 

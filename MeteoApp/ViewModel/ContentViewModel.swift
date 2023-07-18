@@ -29,9 +29,10 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     
     func requestAllowOnceLocationPermission() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         
         withAnimation {
+            isLoading = true
             locationManager.requestLocation()
         }
 
@@ -47,6 +48,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         Task { @MainActor in
             withAnimation {
                 self.coordinates = latestLocation.coordinate
+                isLoading = false
             }
             
             print(coordinates)
@@ -55,6 +57,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+        isLoading = false
     }
     
 }
