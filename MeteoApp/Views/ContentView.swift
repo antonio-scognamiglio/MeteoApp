@@ -100,7 +100,7 @@ struct ContentView: View {
                                         .animation(.easeIn, value: viewModel.coordinates)
                                     LocationButton(.currentLocation) {
                                         withAnimation {
-                                            viewModel.isLoading = true
+//                                            viewModel.isLoading = true
                                             selectedLocation = nil
                                             viewModel.requestAllowOnceLocationPermission()
                                         }
@@ -177,15 +177,15 @@ struct ContentView: View {
                     .onChange(of: viewModel.coordinates) { _ in
                         Task {
                             do {
+                                isShowingLoading = true
                                 weatherForecast = try await APIHandler.shared.fetchWeatherForecast(latitude: viewModel.strCoordinates.latitude, longitude: viewModel.strCoordinates.longitude)
                                 withAnimation {
-                                    
-                                    viewModel.isLoading = false
-                                    hasFetched = true
+                                        isShowingLoading = false
+                                        hasFetched = true
                                 }
 
                             } catch {
-                                viewModel.isLoading = false
+                                isShowingLoading = false
                                 hasFetched = false
 
                                 print(error.localizedDescription)

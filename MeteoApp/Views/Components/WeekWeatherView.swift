@@ -19,7 +19,6 @@ struct WeekWeatherView: View {
     }
     var body: some View {
         
-//        VStack {
             ScrollView {
                 ForEach(0...numberOfDays - 1, id: \.self){ i in
                                         HStack {
@@ -51,8 +50,6 @@ struct WeekWeatherView: View {
                 }
             }
             .scrollIndicators(.hidden)
-//            .frame(height: CGFloat(numberOfDays) * 40)
-//        }
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 15)
